@@ -1,9 +1,13 @@
 let clicker = document.getElementById('clicker')
 let clicks = document.getElementById('clicks')
 let contador_de_clicks = 0
+let corpo = document.body
 clicker.addEventListener('click', () => {
     contar_clicks()
 })
+
+var por_segundo = false
+var trollado = false
 
 function comprar_item() {
     let itens = document.querySelectorAll('.powerups')
@@ -91,20 +95,137 @@ function comprar_item() {
                 }
             }
             
-            if (element.querySelector('h2').innerText == 'Autoclicker por Segundo') {
-                if (contador_de_clicks >= 850) {
-                    iniciarContagem()
-                    
+            if (element.querySelector('h2').innerText == 'Autoclicker x 1') {
+                if (!por_segundo) {
+                    if (contador_de_clicks >= 850) {
+                        contador_de_clicks -= 850
+                        if (contador_de_clicks == 1) {
+                            clicks.innerText = `${contador_de_clicks} Click`
+                        } else {
+                            if (contador_de_clicks == -1) {
+                                clicks.innerText = `${contador_de_clicks} Click`
+                            } else {
+                                clicks.innerText = `${contador_de_clicks} Clicks`
+                            }
+                        }
+                        autoclickerx1()
+                    } else {
+                        alert('Clicks insuficientes, de mais alguns clicks :(')
+                    }
+                    por_segundo = true
+                } else {
+                    alert('Este item já está sendo usado!')
                 }
             }
 
+            
+            if (element.querySelector('h2').innerText == 'Autoclicker x 2') {
+                if (!por_segundo) {
+                    if (contador_de_clicks >= 1050) {
+                        contador_de_clicks -= 1050
+                        if (contador_de_clicks == 1) {
+                            clicks.innerText = `${contador_de_clicks} Click`
+                        } else {
+                            if (contador_de_clicks == -1) {
+                                clicks.innerText = `${contador_de_clicks} Click`
+                            } else {
+                                clicks.innerText = `${contador_de_clicks} Clicks`
+                            }
+                        }
+                        autoclickerx2()
+                    } else {
+                        alert('Clicks insuficientes, de mais alguns clicks :(')
+                    }
+                    por_segundo = true
+                } else {
+                    alert('Este item já está sendo usado!')
+                }
+            }
+            
+            if (element.querySelector('h2').innerText == 'Autoclicker x 3') {
+                if (!por_segundo) {
+                    if (contador_de_clicks >= 1500) {
+                        contador_de_clicks -= 1500
+                        if (contador_de_clicks == 1) {
+                            clicks.innerText = `${contador_de_clicks} Click`
+                        } else {
+                            if (contador_de_clicks == -1) {
+                                clicks.innerText = `${contador_de_clicks} Click`
+                            } else {
+                                clicks.innerText = `${contador_de_clicks} Clicks`
+                            }
+                        }
+                        autoclickerx3()
+                    } else {
+                        alert('Clicks insuficientes, de mais alguns clicks :(')
+                    }
+                    por_segundo = true
+                } else {
+                    alert('Este item já está sendo usado!')
+                }
+            }
+
+            if (element.querySelector('h2').innerText == 'Autoclicker x 4') {
+                if (!por_segundo) {
+                    if (contador_de_clicks >= 2000) {
+                        contador_de_clicks -= 2000
+                        if (contador_de_clicks == 1) {
+                            clicks.innerText = `${contador_de_clicks} Click`
+                        } else {
+                            if (contador_de_clicks == -1) {
+                                clicks.innerText = `${contador_de_clicks} Click`
+                            } else {
+                                clicks.innerText = `${contador_de_clicks} Clicks`
+                            }
+                        }
+                        autoclickerx4()
+                    } else {
+                        alert('Clicks insuficientes, de mais alguns clicks :(')
+                    }
+                    por_segundo = true
+                } else {
+                    alert('Este item já está sendo usado!')
+                }
+            }
+
+            if (element.querySelector('h2').innerText == 'Autoclicker x 5(Max)') {
+                if (!por_segundo) {
+                    if (contador_de_clicks >= 2500) {
+                        contador_de_clicks -= 2500
+                        if (contador_de_clicks == 1) {
+                            clicks.innerText = `${contador_de_clicks} Click`
+                        } else {
+                            if (contador_de_clicks == -1) {
+                                clicks.innerText = `${contador_de_clicks} Click`
+                            } else {
+                                clicks.innerText = `${contador_de_clicks} Clicks`
+                            }
+                        }
+                        autoclickerx5()
+                    } else {
+                        alert('Clicks insuficientes, de mais alguns clicks :(')
+                    }
+                    por_segundo = true
+                } else {
+                    alert('Este item já está sendo usado!')
+                }
+            }
+            
             if (element.querySelector('h2').innerText == '???????????????') {
                 contador_de_clicks = 0
                 alert('Trolado com sucesso, cara vc é muuuito curioso :P')
+                element.querySelector('p').innerText = 'TROLAGEM KKKKKKKK, Perdeu todos os clicks :P'
+                document.getElementById('clicker').style.cursor = 'wait'
+                document.getElementById('trollagem').style.display = 'block'
+                trolado()
             }
         })
     });
 } comprar_item()
+
+function trolado() {
+    trollado = true
+}
 
 var aumetar_click = 1
 
@@ -170,35 +291,44 @@ function aumento_de_clickx7() {
 }
 
 function contar_clicks() {
-    if (aumetar_click == 1) {
-        contador_de_clicks = contador_de_clicks + 1
-    } else {
-        if (aumetar_click == 2) {
-            contador_de_clicks = contador_de_clicks + 2
+    if (!trollado) {
+        contador_de_clicks += aumetar_click
+
+        if (aumetar_click == 1) {
+            contador_de_clicks += 1
         } else {
-            if (aumetar_click == 3) {
-                contador_de_clicks = contador_de_clicks + 3
+            if (aumetar_click == 2) {
+                contador_de_clicks += 2
             } else {
-                if (aumetar_click == 4) {
-                    contador_de_clicks = contador_de_clicks + 4
+                if (aumetar_click == 3) {
+                    contador_de_clicks += 3
                 } else {
-                    if (aumetar_click == 5) {
-                        contador_de_clicks = contador_de_clicks + 5
+                    if (aumetar_click == 4) {
+                        contador_de_clicks += 4
                     } else {
-                        if (aumetar_click == 6) {
-                            contador_de_clicks = contador_de_clicks + 6
+                        if (aumetar_click == 5) {
+                            contador_de_clicks += 5
                         } else {
-                            if (aumetar_click == 7) {
-                                contador_de_clicks = contador_de_clicks + 7
+                            if (aumetar_click == 6) {
+                                contador_de_clicks += 6
+                            } else {
+                                if (aumetar_click == 7) {
+                                    contador_de_clicks += 7
+                                }
                             }
                         }
                     }
                 }
             }
         }
+    } else if (trollado == true) {
+        for (let c = 0; c < contador_de_clicks; c++) {
+            clicks.innerText = `0 Clicks`
+            contador_de_clicks = -1
+        }
     }
     
-    if (contador_de_clicks == 1) {
+    if (contador_de_clicks == 1 || contador_de_clicks == -1) {
         clicks.innerText = `${contador_de_clicks} Click`
     } else {
         clicks.innerText = `${contador_de_clicks} Clicks`
@@ -223,7 +353,11 @@ function Caixa_Misteriosa() {
     if (valorAleatorio() == 0 ) {
         alert('Parece que vc teve azar ;(')
         contador_de_clicks = contador_de_clicks - 50
-        clicks.innerText = `${contador_de_clicks} Clicks`
+        if (contador_de_clicks == 1 || contador_de_clicks == -1) {
+            clicks.innerText = `${contador_de_clicks} Clicks`
+        } else {
+            clicks.innerText = `${contador_de_clicks} Clicks`
+        }
     } else {
         alert('Parece que vc teve sorte :)')
         contador_de_clicks = contador_de_clicks + 100
@@ -231,7 +365,7 @@ function Caixa_Misteriosa() {
     }
 }
 
-function iniciarContagem() {
+function autoclickerx1() {
     const intervalo = setInterval(() => {
         contador_de_clicks += 1;
         clicks.innerText = `${contador_de_clicks} Clicks`
@@ -244,4 +378,54 @@ function iniciarContagem() {
     }, 60000); // 60000 milissegundos = 1 minuto
 }
 
-// Iniciar a contagem
+function autoclickerx2() {
+    const intervalo = setInterval(() => {
+        contador_de_clicks += 2;
+        clicks.innerText = `${contador_de_clicks} Clicks`
+        console.log("Contador de clicks:", contador_de_clicks);
+    }, 1000); // Incrementa a cada segundo
+
+    setTimeout(() => {
+        clearInterval(intervalo); // Para após 1 minuto
+        console.log("Contagem finalizada.");
+    }, 60000); // 60000 milissegundos = 1 minuto
+}
+
+function autoclickerx3() {
+    const intervalo = setInterval(() => {
+        contador_de_clicks += 3;
+        clicks.innerText = `${contador_de_clicks} Clicks`
+        console.log("Contador de clicks:", contador_de_clicks);
+    }, 1000); // Incrementa a cada segundo
+
+    setTimeout(() => {
+        clearInterval(intervalo); // Para após 1 minuto
+        console.log("Contagem finalizada.");
+    }, 60000); // 60000 milissegundos = 1 minuto
+}
+
+function autoclickerx4() {
+    const intervalo = setInterval(() => {
+        contador_de_clicks += 4;
+        clicks.innerText = `${contador_de_clicks} Clicks`
+        console.log("Contador de clicks:", contador_de_clicks);
+    }, 1000); // Incrementa a cada segundo
+
+    setTimeout(() => {
+        clearInterval(intervalo); // Para após 1 minuto
+        console.log("Contagem finalizada.");
+    }, 60000); // 60000 milissegundos = 1 minuto
+}
+
+function autoclickerx5() {
+    const intervalo = setInterval(() => {
+        contador_de_clicks += 5;
+        clicks.innerText = `${contador_de_clicks} Clicks`
+        console.log("Contador de clicks:", contador_de_clicks);
+    }, 1000); // Incrementa a cada segundo
+
+    setTimeout(() => {
+        clearInterval(intervalo); // Para após 1 minuto
+        console.log("Contagem finalizada.");
+    }, 60000); // 60000 milissegundos = 1 minuto
+}

@@ -71,6 +71,40 @@ body {
     border-bottom: 2px solid gray;
 }
 
+button {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 700px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #EAEDF0;
+    font-size: 20px;
+}
+
+@media (max-width: 460px) {
+    #loja {
+        display: none;
+    }
+
+    section {
+        width: 100vw;
+        z-index: 1;
+    }
+
+    #nao_selecionar {
+        width: 100vw;
+        z-index: 1;
+    }
+
+    button {
+        display: block;
+        cursor: pointer;
+        z-index: 2;
+    }
+}
+
 ::-webkit-scrollbar {
     width: 8px;
     z-index: -1;
@@ -83,4 +117,16 @@ body {
 ::-webkit-scrollbar-thumb {
     background-color: rgb(82, 82, 82);
     border-radius: 20px;
+}
+
+#trollagem {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    cursor: wait;
+    background-color: transparent;
+    z-index: 3;
 }
