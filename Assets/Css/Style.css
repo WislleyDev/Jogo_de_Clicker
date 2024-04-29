@@ -29,7 +29,7 @@ body {
     width: 49vw;
     height: 100vh;
     background-color: transparent;
-    z-index: 100;
+    z-index: 1;
 }
 
 #loja {
@@ -71,11 +71,11 @@ body {
     border-bottom: 2px solid gray;
 }
 
-button {
+#btn_da_loja {
     display: none;
     position: absolute;
     right: 10px;
-    top: 700px;
+    top: 500px;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -85,7 +85,10 @@ button {
 
 @media (max-width: 460px) {
     #loja {
+        width: 100vw;
         display: none;
+        overflow: auto;
+        z-index: 2;
     }
 
     section {
@@ -98,11 +101,32 @@ button {
         z-index: 1;
     }
 
-    button {
+    #btn_da_loja {
         display: block;
         cursor: pointer;
         z-index: 2;
     }
+}
+
+#btn_fechar_loja {
+    height: 50px;
+    margin: auto;
+    width: 95%;
+    font-size: 1.5em;
+    background-color: white;
+    border-left: 2px solid gray;
+    border-top: 2px solid gray;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+#btn_fechar_loja:hover {
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    border-right: 2px solid gray;
+    border-bottom: 2px solid gray;
 }
 
 ::-webkit-scrollbar {

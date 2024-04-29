@@ -1,9 +1,34 @@
 let clicker = document.getElementById('clicker')
 let clicks = document.getElementById('clicks')
+let loja = document.getElementById('loja')
+let abrir_loja = document.getElementById('btn_da_loja')
 let contador_de_clicks = 0
 let corpo = document.body
 clicker.addEventListener('click', () => {
     contar_clicks()
+})
+
+let btn_fechar_loja = document.createElement('button')
+
+abrir_loja.addEventListener('click', () => {
+    loja.style.display = 'flex'
+    loja.style.overflow = 'auto'
+    abrir_loja.style.display = 'none'
+    clicker.style.display = 'none'
+
+    btn_fechar_loja.id = 'btn_fechar_loja'
+    
+    btn_fechar_loja.innerText = 'Fechar loja'
+
+    document.getElementById('loja_de_power_ups').appendChild(btn_fechar_loja)
+    console.log(document.getElementById('loja_de_power_ups'));
+})
+
+btn_fechar_loja.addEventListener('click', () => {
+    loja.style.display = 'none'
+    abrir_loja.style.display = 'block'
+    clicker.style.display = 'flex'
+    clicker.style.flexDirection = 'column'
 })
 
 var por_segundo = false
