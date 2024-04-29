@@ -352,9 +352,6 @@ function comprar_item() {
             }
             
             if (element.querySelector('h2').innerText == '???????????????') {
-                contador_de_clicks = 0
-                alert('Trolado com sucesso, cara vc é muuuito curioso :P')
-                element.querySelector('p').innerText = 'TROLAGEM KKKKKKKK, Perdeu todos os clicks :P'
                 document.getElementById('clicker').style.cursor = 'wait'
                 document.getElementById('trollagem').style.display = 'block'
                 trolado()
@@ -631,3 +628,9 @@ function autoclickerx10() {
         console.log("Contagem finalizada.");
     }, 60000); // 60000 milissegundos = 1 minuto
 }
+
+function tocar_musica() {
+    let musica_de_fundo = document.getElementById('musica_de_fundo')
+
+    musica_de_fundo.play()
+} tocar_musica()
