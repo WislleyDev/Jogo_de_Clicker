@@ -21,7 +21,6 @@ abrir_loja.addEventListener('click', () => {
     btn_fechar_loja.innerText = 'Fechar loja'
 
     document.getElementById('loja_de_power_ups').appendChild(btn_fechar_loja)
-    console.log(document.getElementById('loja_de_power_ups'));
 })
 
 btn_fechar_loja.addEventListener('click', () => {
