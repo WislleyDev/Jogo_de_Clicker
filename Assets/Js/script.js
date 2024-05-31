@@ -37,16 +37,51 @@ function comprar_item() {
     let itens = document.querySelectorAll('.powerups')
     itens.forEach(element => {
         element.addEventListener('click', () => {
+            console.log(element.querySelector('h2').innerText);
             if (element.querySelector('h2').innerText == 'Recomeçar') {
                 recomecar()
             }
+            
             if (element.querySelector('h2').innerText == 'Caixa Misteriosa') {
                 if (contador_de_clicks >= 25) {
+                    contador_de_clicks -= 25
+                    clicks.innerText = `${contador_de_clicks} Clicks`
                     Caixa_Misteriosa()
                 } else {
                     alert('Clicks insuficientes, de mais alguns clicks :(')
                 }
             }
+
+            if (element.querySelector('h2').innerText == 'Caixa Misteriosa de Bronze') {
+                if (contador_de_clicks >= 800) {
+                    contador_de_clicks -= 800
+                    clicks.innerText = `${contador_de_clicks} Clicks`
+                    Caixa_Misteriosa_de_Bronze()
+                } else {
+                    alert('Clicks insuficientes, de mais alguns clicks :(')
+                }
+            }
+
+            if (element.querySelector('h2').innerText == 'Caixa Misteriosa de Ouro') {
+                if (contador_de_clicks >= 2500) {
+                    contador_de_clicks -= 2500
+                    clicks.innerText = `${contador_de_clicks} Clicks`
+                    Caixa_Misteriosa_de_Ouro()
+                } else {
+                    alert('Clicks insuficientes, de mais alguns clicks :(')
+                }
+            }
+
+            if (element.querySelector('h2').innerText == 'Caixa Misteriosa de Diamante') {
+                if (contador_de_clicks >= 8000) {
+                    contador_de_clicks -= 8000
+                    clicks.innerText = `${contador_de_clicks} Clicks`
+                    Caixa_Misteriosa_de_Diamante()
+                } else {
+                    alert('Clicks insuficientes, de mais alguns clicks :(')
+                }
+            }
+
             if (element.querySelector('h2').innerText == 'Aumento de click x 2') {
                 if (aumetar_click == 2) {
                     alert('Este item já está sendo usado!')
@@ -483,6 +518,30 @@ function valorAleatorio() {
     return random < 0.3 ? 1 : 0;
 }
 
+function valorAleatorio_de_Bronze() {
+    // Gera um número aleatório entre 0 e 1
+    const random = Math.random();
+    
+    // Retorna 1 com 20% de probabilidade e 0 com 70% de probabilidade
+    return random < 0.2 ? 1 : 0;
+}
+
+function valorAleatorio_de_Ouro() {
+    // Gera um número aleatório entre 0 e 1
+    const random = Math.random();
+    
+    // Retorna 1 com 10% de probabilidade e 0 com 70% de probabilidade
+    return random < 0.1 ? 1 : 0;
+}
+
+function valorAleatorio_de_Diamante() {
+    // Gera um número aleatório entre 0 e 1
+    const random = Math.random();
+    
+    // Retorna 1 com 5% de probabilidade e 0 com 70% de probabilidade
+    return random < 0.05 ? 1 : 0;
+}
+
 function Caixa_Misteriosa() {
     if (valorAleatorio() == 0 ) {
         alert('Parece que vc teve azar ;(')
@@ -495,6 +554,54 @@ function Caixa_Misteriosa() {
     } else {
         alert('Parece que vc teve sorte :)')
         contador_de_clicks = contador_de_clicks + 100
+        clicks.innerText = `${contador_de_clicks} Clicks`
+    }
+}
+
+function Caixa_Misteriosa_de_Bronze() {
+    if (valorAleatorio_de_Bronze() == 0 ) {
+        alert('Parece que vc teve azar ;(')
+        contador_de_clicks = contador_de_clicks - 350
+        if (contador_de_clicks == 1 || contador_de_clicks == -1) {
+            clicks.innerText = `${contador_de_clicks} Clicks`
+        } else {
+            clicks.innerText = `${contador_de_clicks} Clicks`
+        }
+    } else {
+        alert('Parece que vc teve sorte :)')
+        contador_de_clicks = contador_de_clicks + 1000
+        clicks.innerText = `${contador_de_clicks} Clicks`
+    }
+}
+
+function Caixa_Misteriosa_de_Ouro() {
+    if (valorAleatorio_de_Ouro() == 0 ) {
+        alert('Parece que vc teve azar ;(')
+        contador_de_clicks = contador_de_clicks - 3500
+        if (contador_de_clicks == 1 || contador_de_clicks == -1) {
+            clicks.innerText = `${contador_de_clicks} Clicks`
+        } else {
+            clicks.innerText = `${contador_de_clicks} Clicks`
+        }
+    } else {
+        alert('Parece que vc teve sorte :)')
+        contador_de_clicks = contador_de_clicks + 10000 
+        clicks.innerText = `${contador_de_clicks} Clicks`
+    }
+}
+
+function Caixa_Misteriosa_de_Diamante() {
+    if (valorAleatorio_de_Diamante() == 0 ) {
+        alert('Parece que vc teve azar ;(')
+        contador_de_clicks = contador_de_clicks - 50000000 
+        if (contador_de_clicks == 1 || contador_de_clicks == -1) {
+            clicks.innerText = `${contador_de_clicks} Clicks`
+        } else {
+            clicks.innerText = `${contador_de_clicks} Clicks`
+        }
+    } else {
+        alert('Parece que vc teve sorte :)')
+        contador_de_clicks = contador_de_clicks + 90000000 
         clicks.innerText = `${contador_de_clicks} Clicks`
     }
 }
@@ -628,9 +735,3 @@ function autoclickerx10() {
         console.log("Contagem finalizada.");
     }, 60000); // 60000 milissegundos = 1 minuto
 }
-
-function tocar_musica() {
-    let musica_de_fundo = document.getElementById('musica_de_fundo')
-
-    musica_de_fundo.play()
-} tocar_musica()
