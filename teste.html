@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Number Clicker</title>
+    <link rel="shortcut icon" href="Assets/Imgs/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="Assets/Css/Style.css">
+    <style>
+        /* Estilo para a nova div transparente */
+        .transparente {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            z-index: 10; /* Garante que a div fique acima de outros elementos */
+            width: 80%; /* Ajuste conforme necessário */
+            height: 80%; /* Ajuste conforme necessário */
+            overflow: auto; /* Permite rolar se o conteúdo for grande */
+            pointer-events: none; /* Desabilita a interação com a própria div */
+        }
+
+        /* Estilo para a imagem dentro da div */
+        .transparente img {
+            width: 100%; /* A imagem ocupa toda a largura da div */
+            height: 100%; /* A imagem ocupa toda a altura da div */
+            object-fit: cover; /* Ajusta a imagem para cobrir toda a div */
+        }
+
+        /* Estilo para garantir que os elementos dentro da div sejam clicáveis */
+        .transparente * {
+            pointer-events: auto; /* Permite a interação com os elementos internos */
+        }
+    </style>
+</head>
+<body>
+    <div id="clicker">
+        <section>
+            <div id="nao_selecionar"></div>
+            <h2>Clicks</h2>
+            <p id="clicks">0 Clicks</p>
+        </section>
+    </div>
+    <div id="loja">
+        <article id="loja_de_power_ups">
+            <h1>Loja de Power Ups</h1>
+            <div class="powerups" id="recomecar">
+                <h2>Recomeçar</h2>
+                <p>Reseta o seu jogo</p>
+            </div>
+            <!-- Demais itens da loja -->
+        </article>
+    </div>
+    <div id="trollagem"></div>
+    <button id="btn_da_loja">Loja</button>
+    <audio id="chipi_chipi" src="Assets/Audio/chipi-chapa.mp3"></audio>
+
+    <!-- Nova div transparente com imagem -->
+    <div class="transparente">
+        <img src="Assets/icons/tenor.gif" alt="Imagem de fundo">
+        <!-- Conteúdo interativo opcional -->
+        <p>Esta é uma div transparente com uma imagem de fundo!</p>
+        <button onclick="alert('Botão clicado!')">Clique aqui</button>
+    </div>
+
+    <script src="Assets/Js/script.js"></script>
+</body>
+</html>

@@ -1,9 +1,16 @@
 let clicker = document.getElementById('clicker')
 let clicks = document.getElementById('clicks')
 let loja = document.getElementById('loja')
+let input = document.getElementById('txt')
+let btn_codigos = document.getElementById('codigos')
+let btn_fechar = document.getElementById('fechar')
+let btn_enviar = document.getElementById('enviar')
+let chipi_chipi = document.querySelector('.transparente')
+let conteiner_de_codigos = document.getElementById('conteiner_de_codigos')
 let abrir_loja = document.getElementById('btn_da_loja')
 let contador_de_clicks = 0
 let corpo = document.body
+
 clicker.addEventListener('click', () => {
     contar_clicks()
 })
@@ -30,8 +37,46 @@ btn_fechar_loja.addEventListener('click', () => {
     clicker.style.flexDirection = 'column'
 })
 
+btn_codigos.addEventListener('click', () => {
+    conteiner_de_codigos.style.display = 'flex'
+})
+
+btn_fechar.addEventListener('click', () => {
+    conteiner_de_codigos.style.display = 'none'
+    input.value = ''
+})
+
+let input_value, input_quase_formatado, input_formatado;
+
+function formatarString(str) {
+    // Remove acentos e caractesres especiais
+    str = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+
+    // Converte para minúsculas
+    str = str.toLowerCase()
+
+    // Remove espaços
+    str = str.replace(/\s/g, '')
+
+    return str
+}
+
+function cheak_codes(str = formatarString(input.value)) {
+    if (str == 'chipichipichapachapa') {
+        console.log('chipichipichapachapa');
+        conteiner_de_codigos.style.display = 'none'
+        input.value = ''
+        chipi_chipi.style.display = 'flex'
+        audio()
+    }
+}
+
+btn_enviar.addEventListener('click', () => {
+    cheak_codes()
+    console.log(formatarString(input.value));
+})
+
 var por_segundo = false
-var trollado = false
 
 function comprar_item() {
     let itens = document.querySelectorAll('.powerups')
@@ -385,20 +430,10 @@ function comprar_item() {
                     alert('Este item já está sendo usado!')
                 }
             }
-            
-            if (element.querySelector('h2').innerText == '???????????????') {
-                document.getElementById('clicker').style.cursor = 'wait'
-                document.getElementById('trollagem').style.display = 'block'
-                trolado()
-            }
+        
         })
     });
 } comprar_item()
-
-function trolado() {
-    trollado = true
-}
-
 var aumetar_click = 1
 
 function aumento_de_clickx2() {
@@ -463,37 +498,31 @@ function aumento_de_clickx7() {
 }
 
 function contar_clicks() {
-    if (!trollado) {
-        if (aumetar_click == 1) {
-            contador_de_clicks += 1
+    if (aumetar_click == 1) {
+        contador_de_clicks += 1
+    } else {
+        if (aumetar_click == 2) {
+            contador_de_clicks += 2
         } else {
-            if (aumetar_click == 2) {
-                contador_de_clicks += 2
+            if (aumetar_click == 3) {
+                contador_de_clicks += 3
             } else {
-                if (aumetar_click == 3) {
-                    contador_de_clicks += 3
+                if (aumetar_click == 4) {
+                    contador_de_clicks += 4
                 } else {
-                    if (aumetar_click == 4) {
-                        contador_de_clicks += 4
+                    if (aumetar_click == 5) {
+                        contador_de_clicks += 5
                     } else {
-                        if (aumetar_click == 5) {
-                            contador_de_clicks += 5
+                        if (aumetar_click == 6) {
+                            contador_de_clicks += 6
                         } else {
-                            if (aumetar_click == 6) {
-                                contador_de_clicks += 6
-                            } else {
-                                if (aumetar_click == 7) {
-                                    contador_de_clicks += 7
-                                }
+                            if (aumetar_click == 7) {
+                                contador_de_clicks += 7
                             }
                         }
                     }
                 }
             }
-        }
-    } else if (trollado == true) {
-        for (let c = 0; c < contador_de_clicks; c++) {
-            contador_de_clicks = null
         }
     }
     
@@ -734,4 +763,10 @@ function autoclickerx10() {
         clearInterval(intervalo); // Para após 1 minuto
         console.log("Contagem finalizada.");
     }, 60000); // 60000 milissegundos = 1 minuto
+}
+
+let chipi_chapa = document.getElementById('chipi_chipi')
+function audio () {
+
+    chipi_chapa.play()
 }
