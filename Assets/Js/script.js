@@ -6,10 +6,15 @@ let btn_codigos = document.getElementById('codigos')
 let btn_fechar = document.getElementById('fechar')
 let btn_enviar = document.getElementById('enviar')
 let chipi_chipi = document.querySelector('.transparente')
+let img_meme = document.querySelector('#img_meme')
+let erro = document.querySelector('#erro')
 let conteiner_de_codigos = document.getElementById('conteiner_de_codigos')
+let janela = document.querySelector('#conteiner_de_codigos > div')
 let abrir_loja = document.getElementById('btn_da_loja')
 let contador_de_clicks = 0
 let corpo = document.body
+
+alert('Ache todos os easter eggs! 0/3')
 
 clicker.addEventListener('click', () => {
     contar_clicks()
@@ -22,7 +27,7 @@ abrir_loja.addEventListener('click', () => {
     loja.style.overflow = 'auto'
     abrir_loja.style.display = 'none'
     clicker.style.display = 'none'
-
+    
     btn_fechar_loja.id = 'btn_fechar_loja'
     
     btn_fechar_loja.innerText = 'Fechar loja'
@@ -62,12 +67,48 @@ function formatarString(str) {
 }
 
 function cheak_codes(str = formatarString(input.value)) {
+    img_meme.src = ''
     if (str == 'chipichipichapachapa') {
+        img_meme.src = 'Assets/icons/tenor.gif'
         console.log('chipichipichapachapa');
         conteiner_de_codigos.style.display = 'none'
-        input.value = ''
         chipi_chipi.style.display = 'flex'
-        audio()
+        input.value = ''
+        chipi_chapa.addEventListener('ended', () => {
+            img_meme.src = ''
+            chipi_chipi.style.display = 'none'
+        })
+        audio(str)
+    } else if (str == 'pedro') {
+        img_meme.src = 'Assets/icons/pedro.gif'
+        console.log('pedro');
+        conteiner_de_codigos.style.display = 'none'
+        chipi_chipi.style.display = 'flex'
+        input.value = ''
+        chipi_chapa.addEventListener('ended', () => {
+            img_meme.src = ''
+            chipi_chipi.style.display = 'none'
+        })
+        audio(str)
+    } else if (str == 'smurfcat') {
+        img_meme.src = 'Assets/icons/smurf_cat.gif'
+        console.log('smurf cat');
+        conteiner_de_codigos.style.display = 'none'
+        chipi_chipi.style.display = 'flex'
+        input.value = ''
+        chipi_chapa.addEventListener('ended', () => {
+            img_meme.src = ''
+            chipi_chipi.style.display = 'none'
+        })
+        audio(str)
+    } else if (str == '' || str != 'smurfcat' || str != 'pedro' || str != 'chipichipichapachapa') {
+        input.value = ''
+        janela.style.maxHeight = '350px'
+        erro.style.display = 'block'
+        setInterval(() => {
+            janela.style.maxHeight = '300px'
+            erro.style.display = 'none'
+        }, 3000);
     }
 }
 
@@ -766,7 +807,15 @@ function autoclickerx10() {
 }
 
 let chipi_chapa = document.getElementById('chipi_chipi')
-function audio () {
+function audio (str) {
+    chipi_chapa.src = ''
+    if (str == 'chipichipichapachapa') {
+        chipi_chapa.src = 'Assets/Audio/chipi-chapa.mp3'
+    } else if (str == 'pedro') {
+        chipi_chapa.src = 'Assets/Audio/pedro-pedro-pedro-pe.mp3'
+    } else if (str == 'smurfcat') {
+        chipi_chapa.src = 'Assets/Audio/we-live-we-love-we-lie-cat.mp3'
+    }
 
     chipi_chapa.play()
 }
